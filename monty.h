@@ -40,7 +40,7 @@ typedef struct bus_s
 	char *content;
 	int lifi;
 }
-bus_t
+bus_t;
 
 extern bus_t bus;
 /**
