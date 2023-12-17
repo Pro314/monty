@@ -1,76 +1,25 @@
 #include "monty.h"
-stack_t *head = NULL;
+
+arg_t *arguments = NULL:
 
 /**
- * main - entry point
- * @argc: arguments count
- * @argv: list of arguments
- * Return: always 0
+ * main: Entry point
+ * @argc: The Number of command line arguments
+ * @argv: A pointer to an array
+ * Description: Print alphabets in lowercase using the 
+ * Return: returns 0 (success)
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	if (argc != 2)
+	size_t n = 0;
+	validate_arguments(argc);
+	initialize_arguments();
+	get_stream(argv[1]);
+
+	while (getline(&arguments->line, &n, arguments->stream) != -1)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
+		printf("%s", arguments->line;
 	}
-	open_file(argv[1]);
-	free_nodes();
 	return (0);
-}
-
-/**
- * @n: Number to go inside the node.
- * Return: Upon sucess a pointer to the node. Otherwise NULL.
- */
-stack_t *create_node(int n)
-{
-	stack_t *node;
-
-	node = malloc(sizeof(stack_t));
-	if (node == NULL)
-		err(4);
-	node->next = NULL;
-	node->prev = NULL;
-	node->n = n;
-	return (node);
-}
-
-/**
- * free_nodes - Frees nodes in the stack.
- */
-void free_nodes(void)
-{
-	stack_t *tmp;
-
-	if (head == NULL)
-		return;
-
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
-}
-
-void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
-{
-	stack_t *tmp;
-
-	if (new_node == NULL || *new_node == NULL)
-		exit(EXIT_FAILURE);
-	if (head == NULL)
-	{
-		head = *new_node;
-		return;
-	}
-	tmp = head;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-
-	tmp->next = *new_node;
-	(*new_node)->prev = tmp;
-
 }
