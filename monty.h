@@ -31,3 +31,42 @@ typedef struct instruction_s
 
 
 #endif /* MONTY_H */
+
+/**
+ * struck arg_s - hold variables
+ * @stream: File that connects to the stream from file
+ * @line: string which will be the line of text read from stream
+ * @line_number: for tracking current line number
+ * @tokens: used to store tokens from line
+ * @instruction: a valid instruction froma line
+ * @n_token: number of tokens created from line
+ * Description: Hold bvariables that will be used
+ */
+
+typedef struct arg_s
+{
+	FILE *stream;
+	char *line;
+	unsigned int line_number;
+	char **tokens;
+	int n_tokens;
+	instruction_t *instruction;
+} arg_t
+
+void push(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
